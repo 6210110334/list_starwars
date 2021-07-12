@@ -23,7 +23,7 @@ class _StarwarsListState extends State<StarwarsList> {
   }
 
   Future<void> fetchPeople() async {
-    var peoples = await _repo.fetchPeople(page: 1);
+    List<People> peoples = await _repo.fetchPeople(page: _page);
     setState(() {
       _peoples = List<People>.from(_peoples);
       _peoples.addAll(peoples);
@@ -36,9 +36,17 @@ class _StarwarsListState extends State<StarwarsList> {
       itemCount: _peoples.length,
       itemBuilder: (context, index) {
         var people = _peoples[index];
-        return Card(
-          child: Row(
-            children: [Text(people.name), Text(people.height)],
+        return Container(
+          padding: EdgeInsets.symmetric(vertical: 0.1, horizontal: 5),
+          child: Card(
+            child: Row(
+              children: [
+                Image.network(people.imagLink),
+                Column(
+                  children: [Text(people.name), Text(people.height)],
+                ),
+              ],
+            ),
           ),
         );
       },
