@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 class People {
+  final int id;
   final String name;
   final String height;
   final String mass;
@@ -10,11 +11,12 @@ class People {
   final String gender;
   final String imagLink;
 
-  People(this.name, this.height, this.eyeColor, this.gender, this.hairColor,
-      this.mass, this.skinColor, this.imagLink);
+  People(this.id, this.name, this.height, this.mass, this.hairColor,
+      this.skinColor, this.eyeColor, this.gender, this.imagLink);
 
   factory People.fromJson(dynamic data, int index) {
     return People(
+        index,
         data['name'],
         data['height'],
         data['mass'],
