@@ -10,9 +10,19 @@ class People {
   final String eyeColor;
   final String gender;
   final String imagLink;
+  final String birth_year;
 
-  People(this.id, this.name, this.height, this.mass, this.hairColor,
-      this.skinColor, this.eyeColor, this.gender, this.imagLink);
+  People(
+      this.id,
+      this.name,
+      this.height,
+      this.mass,
+      this.hairColor,
+      this.skinColor,
+      this.eyeColor,
+      this.gender,
+      this.imagLink,
+      this.birth_year);
 
   factory People.fromJson(dynamic data, int index) {
     return People(
@@ -24,7 +34,8 @@ class People {
         data['skin_color'],
         data['eye_color'],
         data['gender'],
-        'https://starwars-visualguide.com/assets/img/characters/$index.jpg');
+        'https://starwars-visualguide.com/assets/img/characters/$index.jpg',
+        data['birth_year']);
   }
 }
 
